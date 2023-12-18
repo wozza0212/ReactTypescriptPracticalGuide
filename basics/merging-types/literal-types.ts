@@ -7,7 +7,7 @@ role = 'user'
 role = 'editor'
 
 const performAction = (action: string, role: Role) => {
-    if (role === 'admin') {
+    if (role === 'admin' && typeof action === 'string') {
         console.log(`Performing ${action} as ${role}`)
     } else if (role === 'user') {
         console.log(`Performing ${action} as ${role}`)
