@@ -1,8 +1,16 @@
+type User = {
+    name: string,
+    age: number,
+    isAdmin: boolean,
+    id: string | number
+}
+
 let user: {
     name: string,
     age: number,
     isAdmin: boolean,
-    id: string | number}
+    id: string | number
+}
 
 user = {
     name: 'Max',
