@@ -1,11 +1,13 @@
 import { type ReactNode } from "react"
 type CourseGoalProps = {
+    id: number,
     title: string,
-    children: ReactNode
+    children: ReactNode,
+    onDelete: (id: number) => void;
 
 }
 
-const CourseGoal = ({title, children} : CourseGoalProps) => {
+const CourseGoal = ({id, title, children, onDelete} : CourseGoalProps) => {
 
     return <article>
         <div>
@@ -14,7 +16,7 @@ const CourseGoal = ({title, children} : CourseGoalProps) => {
                 {children}
             </div>
         </div>
-        <button>Delete!</button>
+        <button onClick={() => onDelete(id)}>Delete!</button>
     </article>
 }
 
