@@ -15,12 +15,12 @@ export type CoarseGoal = {
 const App = () => {
   const [goals, setGoals] = useState<CoarseGoal[]>([]);
 
-  const addGoalHandler = () => {
+  const addGoalHandler = (goal: string, summary: string) => {
     setGoals((prevGoals) => {
       const newGoal: CoarseGoal = {
         id: Math.random(),
-        title: "My new goal",
-        description: "My new description in depth",
+        title: goal,
+        description: summary,
       };
       return [...prevGoals, newGoal];
     });
@@ -33,7 +33,7 @@ const App = () => {
     <main>
       <div>
         <Header image={GoalsImg}>Course Goals</Header>
-        <NewGoal />
+        <NewGoal onAddGoal={addGoalHandler}/>
         <CourseGoalsList goals={goals} onDelete={deleteGoalHandler}/>
       </div>
     </main>
