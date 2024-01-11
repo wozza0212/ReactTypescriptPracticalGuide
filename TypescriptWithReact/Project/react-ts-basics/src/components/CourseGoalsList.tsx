@@ -12,7 +12,7 @@ type CourseGoalListProps = {
 
 const CourseGoalsList = ({goals, onDelete}: CourseGoalListProps) => {
     if (goals.length === 0) {
-        return <InfoBox severity="high" mode='warning'>You ahve no course goals yet!</InfoBox>
+        return <InfoBox severity="high" mode='warning'>You have no course goals yet!</InfoBox>
     }
 
     let warningBox: ReactNode;
@@ -36,8 +36,6 @@ const CourseGoalsList = ({goals, onDelete}: CourseGoalListProps) => {
         </ul>
         </>
     )
-
-
 }
 
 export default CourseGoalsList
