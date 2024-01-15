@@ -1,12 +1,12 @@
 import { ComponentPropsWithoutRef, type ElementType } from "react";
 
 type ContainerProps<T extends ElementType> = {
-  as: T;
+  as: ElementType;
   children?: React.ReactNode;
 } & ComponentPropsWithoutRef<T>;
 
 const Container = <C extends ElementType>({
-  as,
+  as ,
   children,
   ...props
 }: ContainerProps<C>) => {
