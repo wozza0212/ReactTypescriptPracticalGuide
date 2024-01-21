@@ -6,9 +6,9 @@ type Timer = {
 };
 
 type TimersContextValue = TimersState & {
-  addTimer: (timerData: Timer) => void;
-  startTimers: () => void;
-  stopTimers: () => void;
+  addTimer: (timerData: Timer) => void,
+  startTimers: () => void,
+  stopTimers: () => void,
 };
 
 type TimersState = {
