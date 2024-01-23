@@ -4,9 +4,9 @@ import Timer from "./Timer";
 const Timers = () => {
   const {timers} = useTimersContext()
   return <ul>{
-      timers.map(timer => <li key={timer.name}>
+      timers.map((timer) => (<li key={timer.name}>
       <Timer {...timer} />
-      </li>)
+      </li>))
     }</ul>;
 }
 

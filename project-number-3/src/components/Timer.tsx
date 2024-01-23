@@ -13,22 +13,20 @@ const Timer = ({name, duration}: TimerProps) => {
   const {isRunning} = useTimersContext()
 
   if(remainingTime <= 0 && interval.current) {
+    console.log('stopping timer')
     clearInterval(interval.current)
   }
   useEffect(() => {
-    let timer: number;
-    if(isRunning) {
     const timer = setInterval(() => {
-      setRemainingTime(prevTime => prevTime - 50)
+      setRemainingTime((prevTime) => prevTime - 50)
     }, 50)
     interval.current = timer
-  }else if(interval.current) {
-    clearInterval(interval.current)
-  }
 
-
-    return () => {clearInterval(timer)}
-  }, [isRunning])
+  // }else if(interval.current) {
+  //   clearInterval(interval.current)
+  // }
+    return () => clearInterval(timer)
+  }, [])
 
   const formattedRemainingTime = (remainingTime / 1000).toFixed(2)
   
