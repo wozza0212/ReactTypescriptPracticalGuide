@@ -66,7 +66,7 @@ const timersReducer = (state: TimersState, action: Action): TimersState => {
         ...state.timers,
         {
           name: action.payload.name || 'New Timer',
-          duration: action.payload.duration || 60
+          duration: action.payload.duration || 5
         }
       ]
     }
