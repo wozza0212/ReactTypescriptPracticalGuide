@@ -17,16 +17,22 @@ const Timer = ({name, duration}: TimerProps) => {
     clearInterval(interval.current)
   }
   useEffect(() => {
-    const timer = setInterval(() => {
+    let timer: number;
+    if( isRunning) {
+    timer = setInterval(() => {
       setRemainingTime((prevTime) => prevTime - 50)
     }, 50)
     interval.current = timer
+  }
+    else if(interval.current) {
+      clearInterval(interval.current)
+    }
 
   // }else if(interval.current) {
   //   clearInterval(interval.current)
   // }
     return () => clearInterval(timer)
-  }, [])
+  }, [isRunning])
 
   const formattedRemainingTime = (remainingTime / 1000).toFixed(2)
   
