@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { type ReactNode, useState, useEffect } from "react";
 import get from "./utils/http";
-import { BlogPost } from "./components/BlogPosts";
+import BlogPosts, { BlogPost } from "./components/BlogPosts";
+import fetchingImage from "./assets/data-fetching.png";
 
 type RawDataBlogPost = {
   id: number;
@@ -15,12 +16,36 @@ function App() {
       const data = (await get(
         "https://jsonplaceholder.typicode.com/posts"
       )) as RawDataBlogPost[];
-    };
+
+    const blogPosts: BlogPost[] = data.map((rawPost) => {
+      return {
+        id: rawPost.id,
+        title: rawPost.title,
+        text: rawPost.body,
+
+      }
+    })
+
+    setFetchedPosts(blogPosts);
+  };
+
     
     fetchPosts();
   }, []);
 
-  return <h1>Data Fetching!</h1>;
+  let content: ReactNode
+
+  if(fetchedPosts) {
+    content = <BlogPosts posts={fetchedPosts} />
+  }
+
+  return (
+    <main>
+      <img src={fetchingImage} alt="Fetching data" />
+      {content}
+
+    </main>
+  );
 }
 
 export default App;
