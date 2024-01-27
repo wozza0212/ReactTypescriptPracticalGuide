@@ -20,9 +20,13 @@ const Timer = ({name, duration}: TimerProps) => {
     let timer: number;
     if( isRunning) {
     timer = setInterval(() => {
-      setRemainingTime((prevTime) => prevTime - 50)
-    }, 50)
-    interval.current = timer
+      setRemainingTime((prevTime) => {
+        if(prevTime <= 0) {
+          return prevTime}
+
+        return prevTime - 50})
+      }, 50)
+      interval.current = timer
   }
     else if(interval.current) {
       clearInterval(interval.current)
